@@ -1,0 +1,44 @@
+<html>
+<body>
+
+<script type="text/javascript" src="./One-Cruncher/main_os.js"></script>
+<script type="text/javascript" src="./One-Cruncher/cruncher9.js"></script>
+
+<div id="container"></div>
+
+<div style="margin-top:20px" id="controller">
+<table style="text-align:right;">
+	<tr>
+		<td>Play Balance</td>
+		<td><input type="text" id="play" style="border:1px solid black; width:70px;" onkeypress="ctl_validate('play', event)" onchange="cruncher9.attachedaccount.updateaccount()" value="100" /></td>
+	</tr>
+	<tr>
+		<td>Win Balance</td>
+		<td><input type="text" id="win" style="border:1px solid black; width:70px;" onkeypress="ctl_validate('win', event)" onchange="cruncher9.attachedaccount.updateaccount()" value="0"/></td>
+	</tr>
+	<tr>
+		<td>Deduct Amount</td>
+		<td><input type="text" id="deduct" style="border:1px solid black; width:70px;" onkeypress="ctl_validate('deduct', event)" onchange="cruncher9.attachedaccount.updateaccount()" value="0.55" /></td>
+	</tr>
+</table>
+</div>
+
+<script type="text/javascript">
+function ctl_validate(id, e) {
+	var theval = document.getElementById(id).value + String.fromCharCode(e.keyCode);
+	if(isNaN(theval)) {
+		e.preventDefault();
+	}
+}
+cruncher9.attachedaccount = new account();
+cruncher9.attachedaccount.deducthandle = document.getElementById("deduct");
+cruncher9.attachedaccount.winhandle = document.getElementById("win");
+cruncher9.attachedaccount.playhandle = document.getElementById("play");
+cruncher9.attachedaccount.playbalance = 100;
+cruncher9.attachedaccount.winbalance = 0;
+cruncher9.attachedaccount.deductamount = 0.55;
+cruncher9.init(document.getElementById('container'));
+</script>
+
+</body>
+</html>
